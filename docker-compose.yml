@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  web:
+    build: .
+    environment:
+      - MODE=DEV
+    ports:
+      - 8990:8990
+    command: python manage.py runserver 0.0.0.0:8990
+    volumes:
+      - .:/app
+    depends_on:
+      - db
