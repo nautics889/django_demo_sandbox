@@ -8,8 +8,8 @@ services:
       - MODE=DEV
     ports:
       - 8990:8990
-    command: python manage.py runserver 0.0.0.0:8990
     volumes:
-      - .:/app
+      - .:/code
+    command: python sandbox/manage.py runserver 0.0.0.0:8990
     depends_on:
       - db
