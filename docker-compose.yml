@@ -12,4 +12,4 @@ services:
       - .:/code
     depends_on:
       - db
-    command: python sandbox/manage.py runserver 0.0.0.0:8990
+    command: /bin/bash -c "exec invoke run"
