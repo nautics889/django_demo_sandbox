@@ -10,6 +10,6 @@ services:
       - 8990:8990
     volumes:
       - .:/code
-    command: python sandbox/manage.py runserver 0.0.0.0:8990
     depends_on:
       - db
+    command: python sandbox/manage.py runserver 0.0.0.0:8990
