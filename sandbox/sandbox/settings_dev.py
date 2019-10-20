@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'oauth2_provider',
-    'user_app'
+    'user_app.apps.UserAppConfig',
 ]
 
 MIDDLEWARE = [
