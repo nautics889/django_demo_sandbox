@@ -2,6 +2,8 @@ from rest_framework import generics, permissions
 from user_app.models import SandyUser
 from user_app.serializers import SandyUserSerializer
 
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope
+
 
 class SandyUserList(generics.ListCreateAPIView):
     permission_classes = (permissions.AllowAny, )
@@ -10,4 +12,8 @@ class SandyUserList(generics.ListCreateAPIView):
 
 
 class SandyUserDetails(generics.RetrieveAPIView):
-    pass
+    permission_classes = (permissions.IsAuthenticated, TokenHasReadWriteScope)
+    serializer_class = SandyUserSerializer
+
+    def get_object(self):
+        return self.request.user

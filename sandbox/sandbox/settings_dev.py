@@ -133,3 +133,11 @@ REST_FRAMEWORK = {
 }
 
 AUTH_USER_MODEL = 'user_app.SandyUser'
+
+OAUTH2_PROVIDER = {
+    # list of available scopes
+    'SCOPES': {
+        'read': 'Read scope',
+        'write': 'Write scope'
+    }
+}

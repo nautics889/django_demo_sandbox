@@ -17,7 +17,7 @@ class SandyUserSerializer(serializers.ModelSerializer):
     )
 
     def validate(self, data):
-        password = data.get('password')
+        password = data.get('password', None)
 
         try:
             validators.validate_password(password)
@@ -25,3 +25,6 @@ class SandyUserSerializer(serializers.ModelSerializer):
             raise
         else:
             return super(SandyUserSerializer, self).validate(data)
+
+    def create(self, validated_data):
+        return SandyUser.objects.create_user(**validated_data)

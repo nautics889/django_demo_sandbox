@@ -9,17 +9,17 @@ from django.utils.text import gettext_lazy as _
 class SandyUser(PermissionsMixin, AbstractBaseUser):
     username = models.CharField(
         _('username'),
-        max_length=150,
+        max_length=20,
         unique=True,
         help_text=_(
-            'Required. 150 characters or fewer. '
+            'Required. 20 characters or fewer. '
             'Letters, digits and @/./+/-/_ only.'),
         validators=[UnicodeUsernameValidator],
         error_messages={
             'unique': _("A user with that username already exists."),
         },
     )
-    email = models.EmailField(_('email address'), blank=True)
+    email = models.EmailField(_('email address'))
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,

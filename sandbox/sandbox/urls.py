@@ -24,6 +24,10 @@ urlpatterns = [
         admin.site.urls,
         name='admin'
     ),
+    path(
+        'o/',
+        include('oauth2_provider.urls', namespace='oauth2_provider')
+    ),
     re_path(
         r'^docs(?P<format>.json)/$',
         SchemaView.without_ui(cache_timeout=None),
@@ -35,7 +39,7 @@ urlpatterns = [
         name='schema-swagger-ui'
     ),
     path(
-        'user/',
+        'users/',
         include('user_app.urls')
     ),
 ]
