@@ -8,7 +8,7 @@ from user_app.models import SandyUser
 class SandyUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = SandyUser
-        fields = ('username', 'email', 'password')
+        fields = ('username', 'email', 'status', 'password')
 
     email = serializers.EmailField(required=True, min_length=5)
     password = serializers.CharField(
