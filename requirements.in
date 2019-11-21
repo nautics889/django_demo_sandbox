@@ -6,3 +6,4 @@ django-filter
 django-oauth-toolkit
 psycopg2-binary
 swagger-spec-validator
+factory_boy
