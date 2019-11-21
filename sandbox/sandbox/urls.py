@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, re_path
+from django.urls import path, re_path, include
 
 from sandbox.swagger import SchemaView
 
@@ -23,6 +23,10 @@ urlpatterns = [
         'admin/',
         admin.site.urls,
         name='admin'
+    ),
+    path(
+        'o/',
+        include('oauth2_provider.urls', namespace='oauth2_provider')
     ),
     re_path(
         r'^docs(?P<format>.json)/$',
@@ -33,5 +37,9 @@ urlpatterns = [
         'docs/',
         SchemaView.with_ui('swagger', cache_timeout=None),
         name='schema-swagger-ui'
+    ),
+    path(
+        'users/',
+        include('user_app.urls')
     ),
 ]
