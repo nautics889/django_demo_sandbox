@@ -1,0 +1,8 @@
+invoke
+Django
+drf_yasg
+djangorestframework
+django-filter
+django-oauth-toolkit
+psycopg2-binary
+swagger-spec-validator
