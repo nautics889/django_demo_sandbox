@@ -1,5 +1,5 @@
 from django.urls import re_path
-from user_app.views import SandyUserList, SandyUserDetails
+from user_app.views import SandyUserList, SandyCurrentUserDetails
 
 urlpatterns = [
     re_path(
@@ -9,7 +9,7 @@ urlpatterns = [
     ),
     re_path(
         '^my_profile$',
-        SandyUserDetails.as_view(),
+        SandyCurrentUserDetails.as_view(),
         name='retrive-details-current-user'
     ),
 ]

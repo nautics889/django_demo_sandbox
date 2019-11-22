@@ -11,7 +11,7 @@ class SandyUserList(generics.ListCreateAPIView):
     serializer_class = SandyUserSerializer
 
 
-class SandyUserDetails(generics.RetrieveAPIView):
+class SandyCurrentUserDetails(generics.RetrieveAPIView):
     permission_classes = (permissions.IsAuthenticated, TokenHasReadWriteScope)
     serializer_class = SandyUserSerializer
 
