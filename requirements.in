@@ -1,5 +1,7 @@
 invoke
+celery
 Django
+django-celery-email
 drf_yasg
 djangorestframework
 django-filter

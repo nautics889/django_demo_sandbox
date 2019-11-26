@@ -2,6 +2,17 @@ version: '3'
 services:
   db:
     image: postgres
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"
+    restart: on-failure
+# probably will be needed further
+#  redis:
+#    image: redis:latest
+#    ports:
+#      - 6379:6379
   web:
     build: .
     environment:
@@ -13,3 +24,10 @@ services:
     depends_on:
       - db
     command: /bin/bash -c "exec invoke run"
+  celery:
+    build: .
+    command: /bin/bash -c "cd sandbox && celery -A sandbox worker -l info"
+    volumes:
+      - .:/code
+    depends_on:
+      - rabbitmq

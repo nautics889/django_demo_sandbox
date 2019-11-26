@@ -1,5 +1,6 @@
 from django.urls import re_path
-from user_app.views import SandyUserList, SandyCurrentUserDetails
+
+from user_app.views import SandyCurrentUserDetails, SandyUserList
 
 urlpatterns = [
     re_path(

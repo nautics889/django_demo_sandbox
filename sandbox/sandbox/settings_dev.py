@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_yasg',
     'oauth2_provider',
+    'djcelery_email',
     'user_app.apps.UserAppConfig',
 ]
 
@@ -142,3 +143,7 @@ OAUTH2_PROVIDER = {
         'write': 'Write scope'
     }
 }
+
+CELERY_BROKER_URL = 'amqp://guest:guest@django_demo_sandbox_rabbitmq_1:5672/'
+
+EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
