@@ -8,7 +8,7 @@ from user_app.mailer import Mailer
 # TODO: update view for signup, create token confirm view
 
 
-class SandyUserList(generics.ListCreateAPIView):
+class SandyUserList(generics.ListAPIView):
     permission_classes = (permissions.AllowAny, )
     queryset = SandyUser.objects.all()
     serializer_class = SandyUserSerializer

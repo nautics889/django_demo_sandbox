@@ -146,7 +146,10 @@ OAUTH2_PROVIDER = {
 
 CELERY_BROKER_URL = 'amqp://guest:guest@django_demo_sandbox_rabbitmq_1:5672/'
 
-EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+#EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
+
+# for debug purporse
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 CELERY_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
