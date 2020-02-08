@@ -42,6 +42,7 @@ ruamel.yaml.clib==0.2.0   # via ruamel.yaml
 ruamel.yaml==0.16.5       # via drf-yasg
 six==1.13.0               # via drf-yasg, faker, jsonschema, packaging, pyrsistent, python-dateutil, swagger-spec-validator
 sqlparse==0.3.0           # via django
+supervisor==4.1.0
 swagger-spec-validator==2.4.3
 text-unidecode==1.3       # via faker
 uritemplate==3.0.0        # via coreapi, drf-yasg

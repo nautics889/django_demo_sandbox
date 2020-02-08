@@ -22,16 +22,20 @@ def wait_port_is_open(host, port):
             pass
         time.sleep(1)
 
+
 @task
 def init_db(ctx):
     wait_port_is_open(os.getenv('DB_HOST', 'db'), 5432)
     ctx.run('python sandbox/manage.py makemigrations')
     ctx.run('python sandbox/manage.py migrate')
 
+
 @task
 def start_celery(ctx):
-    # ctx.run('cd sandbox && celery -A sandbox worker -l info')
-    pass
+    ctx.run('cp /code/celery.conf /etc/supervisor/conf.d/ && '
+            'service supervisor start && '
+            'supervisorctl start celery')
+
 
 @task
 def run(ctx):

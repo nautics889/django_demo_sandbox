@@ -23,11 +23,5 @@ services:
       - .:/code
     depends_on:
       - db
-    command: /bin/bash -c "exec invoke run"
-  celery:
-    build: .
-    command: /bin/bash -c "cd sandbox && celery -A sandbox worker -l info"
-    volumes:
-      - .:/code
-    depends_on:
       - rabbitmq
+    command: /bin/bash -c "exec invoke run"
