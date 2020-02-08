@@ -2,8 +2,9 @@ from django.contrib.auth.models import BaseUserManager
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from user_app.mailer import Mailer
 from user_app.token import account_activation_token
+
+from user_app.tasks import send_mail_task
 
 
 class SandyUserManager(BaseUserManager):
@@ -26,18 +27,19 @@ class SandyUserManager(BaseUserManager):
         extra_fields.setdefault('is_staff', False)
         extra_fields.setdefault('is_superuser', False)
         user = self._create_user(username, email, password, **extra_fields)
-        mailer = Mailer()
-        mailer.send_messages(
-            'subj',
-            'confirm_registration_mail.html',
-            {
+        send_mail_task.delay(
+            subject='Confirmation mail',
+            message='Confirm your registration',
+            template='confirm_registration_mail.html',
+            context={
                 'username': user.username,
                 'uid': urlsafe_base64_encode(
                     force_bytes(user.id)
                 ),
                 'token': account_activation_token.make_token(user)
             },
-            [user.email, ]
+            sender='sandbox@sand.box',
+            recipient_list=[email, ]
         )
         return user
 

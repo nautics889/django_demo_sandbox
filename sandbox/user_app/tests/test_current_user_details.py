@@ -21,7 +21,7 @@ class SandyCurrentUserDetailsTest(APITestCase):
         token.save()
 
     def setUp(self):
-        self.url = reverse('retrive-details-current-user')
+        self.url = reverse('retrieve-details-current-user')
         self.client.credentials(Authorization='Bearer {}'.format(self.token))
 
     def test_current_user_info(self):

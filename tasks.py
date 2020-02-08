@@ -29,7 +29,13 @@ def init_db(ctx):
     ctx.run('python sandbox/manage.py migrate')
 
 @task
+def start_celery(ctx):
+    # ctx.run('cd sandbox && celery -A sandbox worker -l info')
+    pass
+
+@task
 def run(ctx):
     init_db(ctx)
+    start_celery(ctx)
 
     ctx.run('python sandbox/manage.py runserver 0.0.0.0:8990')

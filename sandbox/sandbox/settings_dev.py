@@ -146,13 +146,6 @@ OAUTH2_PROVIDER = {
 
 CELERY_BROKER_URL = 'amqp://guest:guest@django_demo_sandbox_rabbitmq_1:5672/'
 
-#EMAIL_BACKEND = 'djcelery_email.backends.CeleryEmailBackend'
-
-# for debug purporse
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-CELERY_EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
 # Host for sending e-mail.
 EMAIL_HOST = 'localhost' # for debugging purposes
 
@@ -162,4 +155,7 @@ EMAIL_PORT = 1025
 # Optional SMTP authentication information for EMAIL_HOST.
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
+
+# Turn off security layers during development
+EMAIL_USE_SSL = False
 EMAIL_USE_TLS = False
