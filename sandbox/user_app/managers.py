@@ -30,6 +30,8 @@ class SandyUserManager(BaseUserManager):
         send_mail_task.delay(
             subject='Confirmation mail',
             message='Confirm your registration',
+            sender='sandbox@sand.box',
+            recipient_list=[email, ],
             template='confirm_registration_mail.html',
             context={
                 'username': user.username,
@@ -37,9 +39,7 @@ class SandyUserManager(BaseUserManager):
                     force_bytes(user.id)
                 ),
                 'token': account_activation_token.make_token(user)
-            },
-            sender='sandbox@sand.box',
-            recipient_list=[email, ]
+            }
         )
         return user
 

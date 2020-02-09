@@ -11,6 +11,6 @@ urlpatterns = [
     re_path(
         '^my_profile$',
         SandyCurrentUserDetails.as_view(),
-        name='retrive-details-current-user'
+        name='retrieve-details-current-user'
     ),
 ]
