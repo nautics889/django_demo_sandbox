@@ -1,9 +1,9 @@
-from django.contrib.auth.models import (AbstractBaseUser, PermissionsMixin)
+from django.contrib.auth.models import (AbstractBaseUser,
+                                        PermissionsMixin,
+                                        UserManager)
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.db import models
 from django.utils.text import gettext_lazy as _
-
-from user_app.managers import SandyUserManager
 
 
 class SandyUser(PermissionsMixin, AbstractBaseUser):
@@ -40,7 +40,7 @@ class SandyUser(PermissionsMixin, AbstractBaseUser):
         max_length=120
     )
 
-    objects = SandyUserManager()
+    objects = UserManager()
 
     EMAIL_FIELD = 'email'
     USERNAME_FIELD = 'username'
