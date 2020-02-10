@@ -27,5 +27,4 @@ class SandyUserSerializer(serializers.ModelSerializer):
             return super(SandyUserSerializer, self).validate(data)
 
     def create(self, validated_data):
-        validated_data['is_active'] = False
         return SandyUser.objects.create_user(**validated_data)
