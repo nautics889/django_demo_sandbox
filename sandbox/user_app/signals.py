@@ -6,7 +6,7 @@ from django.utils.http import urlsafe_base64_encode
 from user_app.models import SandyUser
 from user_app.tasks import send_mail_task
 from user_app.token import account_activation_token
-from utils.logger import LOGGER
+from utils import LOGGER
 
 
 @receiver(post_save, sender=SandyUser)
