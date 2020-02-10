@@ -3,7 +3,7 @@ from django.template.loader import get_template
 from django.core import mail
 from django.template.exceptions import TemplateDoesNotExist
 
-from utils.logger import LOGGER
+from utils import LOGGER
 
 
 @shared_task
