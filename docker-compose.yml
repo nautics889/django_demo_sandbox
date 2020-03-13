@@ -24,4 +24,4 @@ services:
     depends_on:
       - db
       - rabbitmq
-    command: /bin/bash -c "exec invoke run"
+    command: /bin/bash -c "python /code/sandbox/manage.py"

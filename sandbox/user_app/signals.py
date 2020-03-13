@@ -6,7 +6,7 @@ from django.utils.http import urlsafe_base64_encode
 from user_app.models import SandyUser
 from user_app.tasks import send_mail_task
 from user_app.token import account_activation_token
-from utils import LOGGER
+from utils import logger
 
 
 @receiver(post_save, sender=SandyUser)
@@ -14,7 +14,7 @@ def send_confirm_registration_token(sender, instance, created, **kwargs):
     if not created:
         return None
 
-    LOGGER.info('POST SAVE SIGNAL')
+    logger.info('POST SAVE SIGNAL')
 
     send_mail_task.delay(
         subject='Confirmation mail',

@@ -3,13 +3,13 @@
 import os
 import sys
 
-from utils import LOGGER
+from utils import logger
 
 
 def main():
     settings_file = 'sandbox.settings'
     if os.environ.get('MODE') == 'DEV':
-        LOGGER.info('Running service in a development mode...')
+        logger.info('Running service in a development mode...')
         settings_file = 'sandbox.settings_dev'
 
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', settings_file)

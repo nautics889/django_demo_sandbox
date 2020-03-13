@@ -8,7 +8,7 @@ from user_app.token import account_activation_token
 
 from user_app.models import SandyUser
 from user_app.serializers import SandyUserSerializer
-from utils import LOGGER
+from utils import logger
 
 
 class SandyUserList(generics.ListCreateAPIView):
@@ -33,7 +33,7 @@ def activate_account(request):
         uid = force_text(urlsafe_base64_decode(encoded_uid))
         user = SandyUser.objects.get(pk=uid)
     except (TypeError, ValueError, OverflowError, SandyUser.DoesNotExist) as e:
-        LOGGER.debug(e, exc_info=True)
+        logger.debug(e, exc_info=True)
         user = None
     if user is not None and account_activation_token.check_token(user, token):
         user.is_active = True
